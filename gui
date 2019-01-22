@@ -22,7 +22,7 @@ void main(){
 	// Création d'une fenêtre de 800x600, au titre "Cent Mille Milliards de Poèmes" //
 	JFrame fenetre = new JFrame();
 	fenetre.setVisible(true);
-	fenetre.setSize(800, 600);
+	fenetre.setSize(500, 370);
 	fenetre.setTitle("Cent Mille Milliards de Poèmes");
 	
 	// Création d'un conteneur à l'arrière plan gris, qui sera intégré en haut de la fenêtre //
