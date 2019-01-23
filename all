@@ -1,0 +1,145 @@
+
+// IMPORTATION DES DIFFÉRENTS MODULES UTILISÉS //
+
+// Fenêtres
+import javax.swing.JFrame;
+// Conteneurs
+import javax.swing.JPanel;
+// Zones de texte
+import javax.swing.JLabel;
+// Boutons
+import javax.swing.JButton;
+// Positionnement relatif aux bordures
+import java.awt.BorderLayout;
+// Couleurs
+import java.awt.Color;
+// Évenements
+import java.awt.event. *;
+// Dimensionnement
+import java.awt.Dimension;
+// Typographie
+import java.awt.Font;
+// Images
+import java.awt.Image;
+// Outils
+import java.awt.Toolkit;
+// Lecture de fichiers
+import java.io. *;
+
+// Déclaration des objets graphiques //
+JFrame fenetre;
+JPanel panneau_top, panneau_mid, panneau_bot;
+JLabel description, poeme;
+JButton generer;
+Image icone = Toolkit.getDefaultToolkit().getImage("U:/Videos/icone.jpg");
+Font font_poeme = new Font("TimesRoman", Font.PLAIN, 13);
+
+// Déclarations des variables //
+String description_txt, poeme_txt, v01, v02, v03, v04, v05, v06, v07, v08, v09, v10, v11, v12, v13, v14, rime_a, rime_b, rime_c, rime_d, rime_e, ligne;
+
+// Fonction associée au clic sur le bouton "Générer un poème" //
+class clicGeneration implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+
+		// Initialisation des emplacements des rimes
+		rime_a = "U:/Documents/ISN/_Mini-projet/programme/rime_a.txt";
+		rime_b = "U:/Documents/ISN/_Mini-projet/programme/rime_b.txt";
+		rime_c = "U:/Documents/ISN/_Mini-projet/programme/rime_c.txt";
+		rime_d = "U:/Documents/ISN/_Mini-projet/programme/rime_d.txt";
+		rime_e = "U:/Documents/ISN/_Mini-projet/programme/rime_e.txt";
+
+		// Génération de vers par la fonction "generation" grâce au fichier rime et le nombre de lignes qu'il contient //
+		v01 = generation(rime_a, 40);
+		v02 = generation(rime_b, 40);
+		v03 = generation(rime_a, 40);
+		v04 = generation(rime_b, 40);
+		v05 = generation(rime_a, 40);
+		v06 = generation(rime_b, 40);
+		v07 = generation(rime_a, 40);
+		v08 = generation(rime_b, 40);
+		v09 = generation(rime_c, 20);
+		v10 = generation(rime_c, 20);
+		v11 = generation(rime_d, 20);
+		v12 = generation(rime_e, 20);
+		v13 = generation(rime_e, 20);
+		v14 = generation(rime_d, 20);
+
+		// Actualisation de la zone de texte avec les vers fraîchement générés //
+		poeme_txt = "<html>"+v01+"<br>"+v02+"<br>"+v03+"<br>"+v04+"<br>"+v05+"<br>"+v06+"<br>"+v07+"<br>"+v08+"<br>"+v09+"<br>"+v10+"<br>"+v11+"<br>"+v12+"<br>"+v13+"<br>"+v14+"</html>";
+		poeme.setText(poeme_txt);
+   }
+}
+
+// Programme lancé à l'initialisation //
+void main(){
+	// Création d'une fenêtre de 370x420, au titre "Cent Mille Milliards de Poèmes" //
+	fenetre = new JFrame();
+	fenetre.setResizable(false);
+	fenetre.setVisible(true);
+	fenetre.setSize(370, 420);
+	fenetre.setIconImage(icone);
+	fenetre.setTitle("Cent Mille Milliards de Poèmes");
+	
+	// Création d'un conteneur à l'arrière plan gris, positionné en haut de la fenêtre //
+	panneau_top = new JPanel();
+	panneau_top.setBackground(Color.GRAY);
+	fenetre.add(panneau_top, BorderLayout.NORTH);
+	panneau_top.setVisible(true);
+
+	// Création d'une zone de texte dans le conteneur gris, allouée à la description du concept //
+	description_txt = "<html>« Ce petit ouvrage permet à tout un chacun<br>de composer à volonté cent mille milliards de sonnets,<br>tous réguliers bien entendu. »</html>";
+	description = new JLabel(description_txt);
+	panneau_top.add(description);
+
+	// Création d'un conteneur à l'arrière plan blanc, positionné au milieu de la fenêtre //
+	panneau_mid = new JPanel();
+	panneau_mid.setBackground(Color.WHITE);
+	fenetre.add(panneau_mid, BorderLayout.CENTER);
+	panneau_mid.setVisible(true);
+
+	// Création d'une zone de texte dans le conteneur blanc, allouée au poème //
+	poeme = new JLabel();
+	poeme.setFont(font_poeme);
+	poeme.setPreferredSize(new Dimension(320, 260));
+	panneau_mid.add(poeme, BorderLayout.WEST);
+
+	// Création d'un conteneur à l'arrière plan noir, positionné au bas de la fenêtre //
+	panneau_bot = new JPanel();
+	panneau_bot.setBackground(Color.BLACK);
+	fenetre.add(panneau_bot, BorderLayout.SOUTH);
+	panneau_bot.setVisible(true);
+
+	// Création d'un bouton servant à générer le poème dans le conteneur noir //
+	generer = new JButton("Générer un poème");
+	generer.setPreferredSize(new Dimension(350,40));
+	generer.addActionListener(new clicGeneration());
+	panneau_bot.add(generer);
+}
+
+// Programme de génération de vers en fonction de la rime et le nombre de lignes du fichier associé //
+String generation(String rime, int max){
+	try {
+		BufferedReader fichier = new BufferedReader(new FileReader(rime));
+		
+		ligne = "";
+		int nombre = random(1, max);
+		
+		for (int n = 0; n < nombre; n ++) {
+			ligne = fichier.readLine();
+		}
+	}
+	catch(Exception e) {
+	}
+	return ligne;
+}
+
+// Programme vérifiant la récurrence d'une rime et assurant son unicité //
+void verification(){
+}
+
+
+//TODOLIST
+//
+// Ajouter le nom Raymond Queneau à la fin du poème
+// Vérification des doublons
+// Commenter le programme de génération
