@@ -31,7 +31,7 @@ JFrame fenetre;
 JPanel panneau_top, panneau_mid, panneau_bot;
 JLabel description, poeme;
 JButton generer;
-Image icone = Toolkit.getDefaultToolkit().getImage("U:/Videos/icone.jpg");
+Image icone = Toolkit.getDefaultToolkit().getImage("E:/CMMP/icone.png");
 Font font_poeme = new Font("TimesRoman", Font.PLAIN, 13);
 
 // Déclarations des variables //
@@ -42,11 +42,11 @@ class clicGeneration implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		// Initialisation des emplacements des rimes
-		rime_a = "U:/Documents/ISN/_Mini-projet/programme/rime_a.txt";
-		rime_b = "U:/Documents/ISN/_Mini-projet/programme/rime_b.txt";
-		rime_c = "U:/Documents/ISN/_Mini-projet/programme/rime_c.txt";
-		rime_d = "U:/Documents/ISN/_Mini-projet/programme/rime_d.txt";
-		rime_e = "U:/Documents/ISN/_Mini-projet/programme/rime_e.txt";
+		rime_a = "E:/CMMP/rime_a.txt";
+		rime_b = "E:/CMMP/rime_b.txt";
+		rime_c = "E:/CMMP/rime_c.txt";
+		rime_d = "E:/CMMP/rime_d.txt";
+		rime_e = "E:/CMMP/rime_e.txt";
 
 		// Génération de vers par la fonction "generation" grâce au fichier rime et le nombre de lignes qu'il contient //
 		v01 = generation(rime_a, 40);
@@ -65,18 +65,18 @@ class clicGeneration implements ActionListener {
 		v14 = generation(rime_d, 20);
 
 		// Actualisation de la zone de texte avec les vers fraîchement générés //
-		poeme_txt = "<html>"+v01+"<br>"+v02+"<br>"+v03+"<br>"+v04+"<br>"+v05+"<br>"+v06+"<br>"+v07+"<br>"+v08+"<br>"+v09+"<br>"+v10+"<br>"+v11+"<br>"+v12+"<br>"+v13+"<br>"+v14+"</html>";
+		poeme_txt = "<html>"+v01+"<br>"+v02+"<br>"+v03+"<br>"+v04+"<br><br>"+v05+"<br>"+v06+"<br>"+v07+"<br>"+v08+"<br><br>"+v09+"<br>"+v10+"<br>"+v11+"<br><br>"+v12+"<br>"+v13+"<br>"+v14+"<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Raymond Queneau</b></html>";
 		poeme.setText(poeme_txt);
    }
 }
 
 // Programme lancé à l'initialisation //
 void main(){
-	// Création d'une fenêtre de 370x420, au titre "Cent Mille Milliards de Poèmes" //
+	// Création d'une fenêtre de 370x500, au titre "Cent Mille Milliards de Poèmes" //
 	fenetre = new JFrame();
 	fenetre.setResizable(false);
 	fenetre.setVisible(true);
-	fenetre.setSize(370, 420);
+	fenetre.setSize(370, 500);
 	fenetre.setIconImage(icone);
 	fenetre.setTitle("Cent Mille Milliards de Poèmes");
 	
@@ -100,7 +100,7 @@ void main(){
 	// Création d'une zone de texte dans le conteneur blanc, allouée au poème //
 	poeme = new JLabel();
 	poeme.setFont(font_poeme);
-	poeme.setPreferredSize(new Dimension(320, 260));
+	poeme.setPreferredSize(new Dimension(320, 350));
 	panneau_mid.add(poeme, BorderLayout.WEST);
 
 	// Création d'un conteneur à l'arrière plan noir, positionné au bas de la fenêtre //
@@ -111,7 +111,11 @@ void main(){
 
 	// Création d'un bouton servant à générer le poème dans le conteneur noir //
 	generer = new JButton("Générer un poème");
-	generer.setPreferredSize(new Dimension(350,40));
+	generer.setFocusPainted(false);
+	generer.setBorderPainted(false);
+	generer.setForeground(Color.BLACK);
+	generer.setBackground(Color.LIGHT_GRAY); 
+	generer.setPreferredSize(new Dimension(354, 40));
 	generer.addActionListener(new clicGeneration());
 	panneau_bot.add(generer);
 }
