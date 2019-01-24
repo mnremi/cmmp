@@ -1,0 +1,22 @@
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event. *;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+JFrame fenetre;
+JPanel row0, row1, row2, row3, row4, row5, row6, row7, row8, row9;
+JButton  button0_0, button0_1, button0_2, button0_3, button0_4, button0_5, button0_6, button0_7, button0_8, button0_9, button1_0, button1_1, button1_2, button1_3, button1_4, button1_5, button1_6, button1_7, button1_8, button1_9, button2_0, button2_1, button2_2, button2_3, button2_4, button2_5, button2_6, button2_7, button2_8, button2_9, button3_0, button3_1, button3_2, button3_3, button3_4, button3_5, button3_6, button3_7, button3_8, button3_9;
+
+	
+void main(){
+	fenetre = new JFrame();
+	fenetre.setResizable(true);
+	fenetre.setVisible(true);
+	fenetre.setSize(1000, 600);
+	fenetre.setTitle("Mastermind");
+}
